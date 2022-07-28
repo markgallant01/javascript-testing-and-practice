@@ -13,6 +13,18 @@ console.log(stringConverter("raccoon")); // => {r: 1, a: 1, c: 2, o: 2, n: 1}
 
 function stringConverter(string) {
   // your code here
+  let letters = string.split('');
+  let count = {};
+  letters.forEach(function(letter) {
+    if (count[letter]) {
+      count[letter]++;
+    }
+    else {
+      count[letter] = 1;
+    }
+  });
+
+  return count;
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
