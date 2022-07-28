@@ -13,6 +13,17 @@ console.log(arrayConverter(["apple", "banana", "potato", "banana"])); // => {app
 
 function arrayConverter(array) {
   // your code here
+  let obj = {};
+  array.forEach(function(word) {
+    if (obj[word]) {
+      obj[word]++;
+    }
+    else {
+      obj[word] = 1;
+    }
+  });
+
+  return obj;
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
