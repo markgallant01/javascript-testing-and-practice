@@ -27,8 +27,15 @@ console.log(result4); // true
 
 *******************************************************************************/
 
-let exactly = function() {
+let exactly = function(arr, num, callback) {
+  let trueCount = 0;
+  arr.forEach(function(element) {
+    if (callback(element)) {
+      trueCount++;
+    }
+  });
 
+  return trueCount === num;
 };
 
 
