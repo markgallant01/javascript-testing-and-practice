@@ -19,6 +19,14 @@ console.log(result2);   // [ 'RUN!', 'FORREST!' ]
 ***********************************************************************/
 
 // your code here!
+const arrowMyMap = (arr, callback) => {
+  let result = [];
+  for (let i=0; i<arr.length; i++) {
+    result[i] = callback(arr[i]);
+  }
+
+  return result;
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
