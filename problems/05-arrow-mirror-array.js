@@ -11,6 +11,12 @@ arrowMirrorArray(['a', 'b', 'c', 'd']); // => [ 'a', 'b', 'c', 'd', 'd', 'c', 'b
 ***********************************************************************/
 
 // your code here
+const arrowMirrorArray = array => {
+  let original = array.slice();
+  array.reverse();
+
+  return original.concat(array);
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
