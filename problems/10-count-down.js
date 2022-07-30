@@ -29,6 +29,22 @@ Example 4:
 ***********************************************************************/
 
 // your code here
+let countDownTimer = (n) => {
+  if (n === 0) {
+    return 'Happy New Year!';
+  }
+  else {
+    n--;
+    return () => {
+      if (n === 0) {
+        return 'Happy New Year!';
+      }
+      else {
+        n--;
+      }
+    }
+  }
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
