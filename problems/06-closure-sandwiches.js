@@ -18,6 +18,19 @@ sandwich2("pb") // => "One sandwich with tomato and pb"
 ***********************************************************************/
 
 // your code here!
+const sandwichMaker = () => {
+  let s = 'One sandwich with tomato';
+
+  const sand = (...ingredients) => {
+    ingredients.forEach((ingredient) => {
+      s += ` and ${ingredient}`;
+    });
+
+    return s;
+  }
+
+  return sand;
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
