@@ -25,6 +25,25 @@ console.log(table2(75)); // STILL prints 6
 ***********************************************************************/
 
 // your code here
+const recVolume = height => {
+  let width;
+  let length;
+  let result;
+
+  return (n) => {
+    if (width === undefined) {
+      width = n;
+    }
+    else if (length === undefined) {
+      length = n;
+      result = height * width * length;
+      return result;
+    }
+    else {
+      return result;
+    }
+  }
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 
