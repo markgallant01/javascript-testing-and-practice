@@ -23,6 +23,30 @@ console.log(smoothie2("pineapple"));
 ***********************************************************************/
 
 // your code here
+const smoothieMachine = (...ingredients) => {
+  let baseString;
+
+  // if ingredients, initialize base string with them
+  if (ingredients.length !== 0) {
+    baseString = "I'm having a smoothie with ";
+    baseString += ingredients.join(' and ');
+  }
+
+  return (...ingredients) => {
+    // check if base string is already initialized with some values
+    if (baseString) {
+      // add new ingredients to it
+      baseString += ' and ' + ingredients.join(' and ');
+    }
+    else {
+      // initialize base string with ingredients
+      baseString = "I'm having a smoothie with ";
+      baseString += ingredients.join(' and ');
+    }
+
+    return baseString;
+  }
+}
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
