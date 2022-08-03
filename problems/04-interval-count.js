@@ -18,6 +18,19 @@ intervalCount(function() {
 
 function intervalCount(cb, delay, amount) {
   // Your code here
+  let count = 0;
+
+  let helperFunc = () => {
+    if (count < amount) {
+      cb();
+      count++;
+    }
+    else {
+      clearInterval(intervalObj);
+    }
+  }
+
+  let intervalObj = setInterval(helperFunc, delay);
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
