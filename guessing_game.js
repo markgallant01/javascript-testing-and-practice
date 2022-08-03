@@ -4,20 +4,9 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-let secretNumber = 10;
-
-let askGuess = () => {
-  rl.question("Enter a guess: ", (answer) => {
-    answer = Number(answer);
-
-    if (checkGuess(answer)) {
-      console.log('You win!');
-      rl.close();
-    }
-    else {
-      askGuess();
-    }
-  });
+let randomInRange = (min, max) => {
+  // returns random integer in range [min-max] inclusive
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 let checkGuess = num => {
@@ -34,6 +23,22 @@ let checkGuess = num => {
     return true;
   }
 }
+
+let askGuess = () => {
+  rl.question("Enter a guess: ", (answer) => {
+    answer = Number(answer);
+
+    if (checkGuess(answer)) {
+      console.log('You win!');
+      rl.close();
+    }
+    else {
+      askGuess();
+    }
+  });
+}
+
+let secretNumber = randomInRange(1, 100);
 
 askGuess();
 
