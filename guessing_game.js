@@ -4,9 +4,23 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
+let secretNumber;
+
 let randomInRange = (min, max) => {
   // returns random integer in range [min-max] inclusive
   return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+let askRange = () => {
+  rl.question("Enter a max number: ", answerMax => {
+    
+    rl.question("Enter a min number: ", answerMin => {
+      secretNumber = randomInRange(answerMin, answerMax);
+      console.log(`I'm thinking of a number between ${answerMin} and ${answerMax}...`);
+      rl.close();
+    });
+
+  });
 }
 
 let checkGuess = num => {
@@ -38,7 +52,6 @@ let askGuess = () => {
   });
 }
 
-let secretNumber = randomInRange(1, 100);
-
-askGuess();
+//askGuess();
+askRange();
 
