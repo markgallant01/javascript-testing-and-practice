@@ -15,9 +15,13 @@ let askRange = () => {
   rl.question("Enter a max number: ", answerMax => {
     
     rl.question("Enter a min number: ", answerMin => {
+      answerMin = Number(answerMin);
+      answerMax = Number(answerMax);
       secretNumber = randomInRange(answerMin, answerMax);
       console.log(`I'm thinking of a number between ${answerMin} and ${answerMax}...`);
-      rl.close();
+      
+      // start game loop
+      askGuess();
     });
 
   });
@@ -52,6 +56,5 @@ let askGuess = () => {
   });
 }
 
-//askGuess();
 askRange();
 
