@@ -35,6 +35,22 @@ function printHelp() {
 
 function getWinner(move1, move2) {
   // Your code here
+  // tie condition
+  if (move1 === move2) {
+    return 0;
+  }
+  else {
+    // move1 beats move2
+    if ((move1 === 's' && move2 === 'p') ||
+        (move1 === 'p' && move2 === 'r') ||
+        (move1 === 'r' && move2 === 's')) {
+      return 1;
+    }
+    else {
+      // move1 loses to move2
+      return -1;
+    }
+  }
 }
 
 function getCPUMove() {
@@ -63,12 +79,14 @@ function promptInput(rl) {
       const cpu = validMoveKeys[randomIndex];
 
       console.log(`You pick ${cmd}, computer picks ${cpu}.`);
+      
+      let result = getWinner(cmd, cpu);
 
-      if (cmd === cpu) { // tie
+      if (result === 0) { // tie
         console.log("You tie.\n");
         ties++;
       }
-      else if (VALID_MOVES[cmd].winsAgainst === cpu) { // win
+      else if (result === 1) { // win
         console.log("You win!\n");
         wins++;
       } else { // loss
@@ -77,11 +95,7 @@ function promptInput(rl) {
       }
     } else {
       console.log("\nInvalid command.\n");
-      console.log("  Type 'r' for Rock");
-      console.log("  Type 'p' for Paper");
-      console.log("  Type 's' for Scissors");
-      console.log("  Type 'q' to quit");
-      console.log("  Type 'h' for a list of valid commands\n");
+      printHelp();
     }
 
     promptInput(rl);
