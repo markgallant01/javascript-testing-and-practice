@@ -63,39 +63,54 @@ function getCPUMove() {
 
 function processMove(cmd, cpu) {
   // Your code here
+  console.log(`You pick ${cmd}, computer picks ${cpu}.`);
+
+  if ((cpu === 'r' && cmd === 'r') ||
+      (cpu === 's' && cmd === 's') ||
+      (cpu === 'p' && cmd === 'p')) {
+    console.log("You tie.\n");
+  }
+  else if ((cpu === 'r' && cmd === 'p') ||
+           (cpu === 'p' && cmd === 's') ||
+           (cpu === 's' && cmd === 'r')) {
+    console.log("You win!\n");
+  }
+  else {
+    console.log("You lose...\n");
+  }
 }
 
 /******************************* MAIN FUNCTION *******************************/
 function promptInput(rl) {
   console.log(`${wins} wins - ${losses} losses - ${ties} ties`);
+
   rl.question('> ', (cmd) => {
     cmd = cmd.toLowerCase();
 
     if (cmd === 'h') {
       console.log("\nHelp:\n");
       printHelp();
-    } else if (cmd === 'q') {
+    } 
+    else if (cmd === 'q') {
       rl.close();
       return;
-    } else if (VALID_MOVES[cmd]){
+    } 
+    else if (VALID_MOVES[cmd]){
       const cpu = getCPUMove();
-
-      console.log(`You pick ${cmd}, computer picks ${cpu}.`);
-      
-      let result = getWinner(cmd, cpu);
+      const result = getWinner(cmd, cpu);
+      processMove(cmd, cpu);
 
       if (result === 0) { // tie
-        console.log("You tie.\n");
         ties++;
       }
       else if (result === 1) { // win
-        console.log("You win!\n");
         wins++;
-      } else { // loss
-        console.log("You lose...\n");
+      } 
+      else { // loss
         losses++;
       }
-    } else {
+    } 
+    else {
       console.log("\nInvalid command.\n");
       printHelp();
     }
