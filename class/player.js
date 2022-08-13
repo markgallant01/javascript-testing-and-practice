@@ -58,8 +58,22 @@ class Player {
     }
 
     eatItem(itemName) {
-        // Fill this in
+        // check if player has item
+        let foundItem;
+        let foundItemIndex;
 
+        this.items.forEach((item, index) => {
+            if (item.name === itemName) {
+                foundItem = item;
+                foundItemIndex = index;
+            }
+        });
+
+        // check if it's food
+        if (foundItem.isFood) {
+            // 'eat' the item, removing it from player's inventory
+            this.items.splice(foundItemIndex, 1);
+        }
     }
 
     getItemByName(name) {
