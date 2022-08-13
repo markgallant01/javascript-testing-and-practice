@@ -32,14 +32,29 @@ class Player {
     }
 
     takeItem(itemName) {
+        let foundItem;
+        this.currentRoom.items.forEach((item, index) => {
+            if (item.name === itemName) {
+                foundItem = this.currentRoom.items.splice(index, 1)[0];
+            }
+        });
 
-        // Fill this in
-
+        if (foundItem) {
+            this.items.push(foundItem);
+        }
     }
 
     dropItem(itemName) {
+        let foundItem;
+        this.items.forEach((item, index) => {
+            if (item.name === itemName) {
+                foundItem = this.items.splice(index, 1)[0];
+            }
+        });
 
-        // Fill this in
+        if (foundItem) {
+            this.currentRoom.items.push(foundItem);
+        }
     }
 
     eatItem(itemName) {
@@ -48,8 +63,14 @@ class Player {
     }
 
     getItemByName(name) {
+        let foundItem;
+        this.items.forEach(item => {
+            if (item.name === name) {
+                foundItem = item;
+            }
+        });
 
-        // Fill this in
+        return foundItem;
     }
 }
 
