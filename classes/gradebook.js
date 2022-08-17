@@ -16,3 +16,4 @@ class GradeBook {
 }
 
 module.exports = GradeBook;
+
