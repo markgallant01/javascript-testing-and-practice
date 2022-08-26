@@ -24,18 +24,32 @@ class Cursor {
 
   up() {
     // Move cursor up
+    if (this.row > 0) {
+      this.row -= 1;
+    }
   }
 
   down() {
     // Move cursor down
+    let limit = this.numRows - 1;
+    if (this.row < limit) {
+      this.row += 1;
+    }
   }
 
   left() {
     // Move cursor left
+    if (this.col > 0) {
+      this.col -= 1;
+    }
   }
 
   right() {
     // Move cursor right
+    let limit = this.numCols - 1;
+    if (this.col < limit) {
+      this.col += 1;
+    }
   }
 
 }
