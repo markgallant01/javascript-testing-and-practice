@@ -20,8 +20,17 @@ class ConnectFour {
     Screen.initialize(6, 7);
     Screen.setGridlines(true);
 
+    // create bound functions
+    let cursorLeft = this.cursor.left.bind(this.cursor);
+    let cursorRight = this.cursor.right.bind(this.cursor);
+    let cursorDown = this.cursor.down.bind(this.cursor);
+    let cursorUp = this.cursor.up.bind(this.cursor);
+
     // Replace this with real commands
-    Screen.addCommand('t', 'test command (remove)', ConnectFour.testCommand);
+    Screen.addCommand('h', 'move left', cursorLeft);
+    Screen.addCommand('l', 'move right', cursorRight);
+    Screen.addCommand('j', 'move down', cursorDown);
+    Screen.addCommand('k', 'move up', cursorUp);
 
     this.cursor.setBackgroundColor();
     Screen.render();
