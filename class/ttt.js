@@ -23,14 +23,39 @@ class TTT {
     let cursorDown = this.cursor.down.bind(this.cursor);
     let cursorLeft = this.cursor.left.bind(this.cursor);
     let cursorRight = this.cursor.right.bind(this.cursor);
+    let boundPlace = this.place.bind(this);
 
     // add all commands
     Screen.addCommand('j', 'move down', cursorDown);
     Screen.addCommand('k', 'move up', cursorUp);
     Screen.addCommand('h', 'move left', cursorLeft);
     Screen.addCommand('l', 'move right', cursorRight);
+    Screen.addCommand('i', 'place move', boundPlace);
 
     Screen.render();
+  }
+
+  place() {
+    let row = this.cursor.row;
+    let col = this.cursor.col;
+    let char = this.playerTurn;
+    Screen.setGrid(row, col, char);
+    Screen.render();
+
+    // update grid
+    this.grid[row][col] = char;
+
+    let winner = TTT.checkWin(this.grid);
+    if (winner) {
+      TTT.endGame(winner);
+    }
+
+    if (char === 'O') {
+      this.playerTurn = 'X';
+    }
+    else {
+      this.playerTurn = 'O';
+    }
   }
 
   static checkWin(grid) {
