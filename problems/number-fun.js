@@ -1,5 +1,6 @@
 function returnsThree() {
   // Your code here
+  return 3;
 }
 
 function reciprocal(n) {
