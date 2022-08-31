@@ -66,7 +66,7 @@ describe ('ComputerPlayer', function () {
   });
 
 
-  it('can correctly move when there is a win on the board', function () {
+  it('can correctly move when there is a horizontal win on the board', function () {
 
     grid = [['X','X',' '],
             ['O',' ',' '],
@@ -76,6 +76,28 @@ describe ('ComputerPlayer', function () {
 
     expect(smartMove).to.deep.equal({row: 0, col: 2});
 
+  });
+
+  it('can correctly move when there is a vertical win on the board', function() {
+
+    grid = [['O','X',' '],
+            [' ','X',' '],
+            [' ',' ','O']];
+
+    let smartMove = ComputerPlayer.getSmartMove(grid, 'X');
+
+    expect(smartMove).to.deep.equal({row: 2, col: 1});
+  });
+
+  it('can correctly move when there is a diagonal win on the board', function() {
+
+    grid = [['O',' ','X'],
+            [' ','O','X'],
+            ['X',' ',' ']];
+
+    let smartMove = ComputerPlayer.getSmartMove(grid, 'O');
+
+    expect(smartMove).to.deep.equal({row: 2, col: 2});
   });
 
 
