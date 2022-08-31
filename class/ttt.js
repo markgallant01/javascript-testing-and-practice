@@ -1,5 +1,6 @@
 const Screen = require("./screen");
 const Cursor = require("./cursor");
+const ComputerPlayer = require('./computer-player');
 
 class TTT {
 
@@ -50,11 +51,15 @@ class TTT {
       TTT.endGame(winner);
     }
 
-    if (char === 'O') {
-      this.playerTurn = 'X';
-    }
-    else {
-      this.playerTurn = 'O';
+    // computer's move
+    let CPUmove = ComputerPlayer.getSmartMove(this.grid, 'X');
+    Screen.setGrid(CPUmove.row, CPUmove.col, 'X');
+    Screen.render();
+    this.grid[CPUmove.row][CPUmove.col] = 'X';
+
+    winner = TTT.checkWin(this.grid);
+    if (winner) {
+      TTT.endGame(winner);
     }
   }
 
