@@ -3,14 +3,13 @@ const { expect } = require('chai');
 const Person = require('../problems/person');
 
 describe('Person', function() {
-  let p = new Person('John Doe', 35);
-  let p2 = new Person('Elizabeth Swann', 18);
-/*
+  let p, p2;
+
   beforeEach(function() {
     p = new Person('John Doe', 35);
     p2 = new Person('Elizabeth Swann', 18);
   });
-  */
+
   describe('constructor()', function() {
     it('should set name and age properties', function() {
       expect(p.name).to.equal('John Doe');
@@ -69,13 +68,13 @@ describe('Person', function() {
 
   describe('#tryUpdate(obj)', function() {
     describe('attempts to call #update()', function() {
-      context('should return true if #update() succeeds', function() {
+      it('should return true if #update() succeeds', function() {
         let goodObj = { name: 'x', age: 3 };
         let goodReturn = p.tryUpdate(goodObj);
         expect(goodReturn).to.equal(true);
       });
 
-      context('should return false if #update() fails', function() {
+      it('should return false if #update() fails', function() {
         let badObj = { x: 'x', y: 'y' };
         let badReturn = p.tryUpdate(badObj);
         expect(badReturn).to.equal(false);
@@ -83,5 +82,19 @@ describe('Person', function() {
     });
   });
 
+  describe('_greetAll(arr)', function() {
+    context('calls #sayHello() on each Person in arr', function() {
+      it('should return an array of string messages', function() {
+        let people = [p, p2];
+        let messages = Person._greetAll(people);
+        let correctOutput = [
+          'Hello from John Doe',
+          'Hello from Elizabeth Swann'
+        ];
+        expect(messages).to.deep.equal(correctOutput);
+      });
+    });
+  });
+  
 });
 
