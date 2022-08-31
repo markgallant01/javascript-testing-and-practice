@@ -33,7 +33,7 @@ describe('Person', function() {
 
   describe('#switchVisit(otherPerson)', function() {
     it('should return visit message in reverse order', function() {
-      let message = p.visit(p2);
+      let message = p.switchVisit(p2);
       expect(message).to.equal('Elizabeth Swann visited John Doe');
     });
   });
@@ -72,6 +72,8 @@ describe('Person', function() {
         let goodObj = { name: 'x', age: 3 };
         let goodReturn = p.tryUpdate(goodObj);
         expect(goodReturn).to.equal(true);
+        expect(p.name).to.equal('x');
+        expect(p.age).to.equal(3);
       });
 
       it('should return false if #update() fails', function() {
