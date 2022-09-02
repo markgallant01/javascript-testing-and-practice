@@ -14,7 +14,12 @@ function addNums10(increment) {
 // Runs `addManyNums` in 10 increasing increments
 function addManyNums10(increment) {
   // Fill this in
-
+  let result = [];
+  let limit = increment * 10;
+  for (let i = increment; i <= limit; i += increment) {
+    result.push(addManyNums(i));
+  }
+  return result;
 }
 
 module.exports = [addNums10, addManyNums10];
