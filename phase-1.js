@@ -12,7 +12,12 @@ function addNums(n) {
 // Adds up values of addNums(1) through addNums(n)
 function addManyNums(n) {
   // Fill this in
-
+  if (n === 1) {
+    return 1;
+  }
+  else {
+    return addNums(n) + addManyNums(n-1); 
+  }
 }
 
 
