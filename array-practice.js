@@ -9,8 +9,16 @@ const findMinimum = arr => {
 };
 
 const runningSum = arr => {
-
-  // Your code here
+  if (arr.length === 0) {
+    return [];
+  }
+  else {
+    let sum = [arr[0]];
+    for (let i = 1; i < arr.length; i++) {
+      sum.push(arr[i] + sum[i-1]);
+    }
+    return sum;
+  }
 };
 
 const evenNumOfChars = arr => {
