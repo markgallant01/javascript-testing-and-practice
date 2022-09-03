@@ -46,18 +46,20 @@ const smallerThanCurr = arr => {
 };
 
 const twoSum = (arr, target) => {
-
-  // Your code here
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] === target) {
+        return true;
+      }
+    }
+  }
+  return false;
 };
 
 const secondLargest = arr => {
-
-  // Your code here
 };
 
 const shuffle = (arr) => {
-
-  // Your code here
 };
 
 
