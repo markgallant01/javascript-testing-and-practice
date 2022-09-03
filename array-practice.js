@@ -32,9 +32,17 @@ const evenNumOfChars = arr => {
 };
 
 const smallerThanCurr = arr => {
-
-  // Your code here
-
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    let count = 0;
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[j] < arr[i]) {
+        count++;
+      }
+    }
+    result.push(count);
+  }
+  return result;
 };
 
 const twoSum = (arr, target) => {
