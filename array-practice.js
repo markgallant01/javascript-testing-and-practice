@@ -57,6 +57,32 @@ const twoSum = (arr, target) => {
 };
 
 const secondLargest = arr => {
+  if (arr.length < 2) {
+    return undefined;
+  }
+  else {
+    let largestValue = arr[0];
+    let largestIndex = 0;
+    // loop through arr and find largest value
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] > largestValue) {
+        largestIndex = i;
+        largestValue = arr[i];
+      }
+    }
+
+    arr.splice(largestIndex, 1);
+
+    // loop through again to find second largest value
+    largestValue = arr[0];
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] > largestValue) {
+        largestValue = arr[i];
+      }
+    }
+
+    return largestValue;
+  }
 };
 
 const shuffle = (arr) => {
