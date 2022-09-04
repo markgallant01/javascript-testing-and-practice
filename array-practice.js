@@ -86,6 +86,19 @@ const secondLargest = arr => {
 };
 
 const shuffle = (arr) => {
+  let result = [];
+  // loop the arr and randomly choose to shift() or push()
+  for (let i = 0; i < arr.length; i++) {
+    let choice = Math.floor(Math.random() * 2);
+    if (choice === 0) {
+      result.unshift(arr[i]);
+    }
+    else {
+      result.push(arr[i]);
+    }
+  }
+
+  return result;
 };
 
 
